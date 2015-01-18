@@ -8,6 +8,7 @@ start(_StartType, _StartArgs) ->
     Priv = priv_dir(),
     VRoutes = [
             {"/", cowboy_static, {file, filename:join([Priv, "www", "index.html"])}},
+            {"/ar", ws_handler, []},
             {"/[...]", cowboy_static, {dir,  filename:join(Priv, "www")}}
         ],
     Dispatch = cowboy_router:compile([{'_',  VRoutes}]),
